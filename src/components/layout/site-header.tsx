@@ -3,8 +3,14 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Montserrat } from "next/font/google";
 
 import { siteConfig } from "@/lib/site";
+
+const brandFont = Montserrat({
+  subsets: ["latin"],
+  weight: ["600"],
+});
 
 export function SiteHeader() {
   const [active, setActive] = React.useState<string>("");
@@ -37,7 +43,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 px-3 pt-2 pb-3 md:px-4">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-[999px] border border-white/40 bg-transparent px-4 py-3.5 shadow-[0_10px_28px_rgba(15,23,42,0.10)] md:px-6 lg:px-8 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-[999px] before:border before:border-white/40 before:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.45),transparent_60%),radial-gradient(circle_at_bottom,rgba(15,23,42,0.16),transparent_65%)] before:opacity-45">
-        <Link href="/" className="flex items-center gap-1.5">
+        <Link href="/" className="flex items-center gap-1">
           <Image
             src="/tnt-logo.png"
             alt={siteConfig.shortName}
@@ -46,7 +52,9 @@ export function SiteHeader() {
             className="h-[45px] w-[45px]"
             priority
           />
-          <span className="text-sm font-semibold tracking-tight text-slate-900 md:text-base">
+          <span
+            className={`${brandFont.className} text-[1rem] font-semibold tracking-[0.03em] text-slate-900 md:text-[1.08rem]`}
+          >
             TNT Dekor
           </span>
         </Link>
