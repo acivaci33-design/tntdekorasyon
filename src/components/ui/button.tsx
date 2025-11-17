@@ -13,11 +13,11 @@ export interface ButtonProps
 }
 
 const baseClasses =
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-60";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full font-medium font-cta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-60";
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "bg-sky-700 text-white shadow-sm shadow-sky-900/20 hover:bg-sky-800",
+    "bg-teal-700 text-white shadow-sm shadow-teal-900/20 hover:bg-teal-800",
   outline:
     "border border-slate-200/80 bg-white/80 text-slate-900 hover:bg-slate-50 shadow-sm",
   ghost:

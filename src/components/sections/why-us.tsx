@@ -9,25 +9,25 @@ const items = [
   {
     title: "Güvenilir Hizmet",
     description:
-      "Söz verdiğimiz tarihte, söz verdiğimiz kalitede iş teslim ederek uzun vadeli iş ortaklıkları kuruyoruz.",
+      "İş programını en başta netleştiriyor, söz verdiğimiz tarih ve kapsam dışında sürpriz oluşturmadan işi tamamlıyoruz.",
     icon: ShieldCheck,
   },
   {
     title: "Yüksek Kalite & Profesyonel İşçilik",
     description:
-      "Deneyimli ekibimiz, malzeme seçiminden uygulama detaylarına kadar her aşamada titizlikle çalışır.",
+      "Ekiplerimiz kendi alanında uzman ustalardan oluşur; gizli detaylarda bile düzgün bitişler ve temiz işçiliği önceliklendiriyoruz.",
     icon: CheckCircle2,
   },
   {
     title: "Modern Tasarım Çözümleri",
     description:
-      "Mimari trendleri, fonksiyonellik ve estetiği bir araya getirerek çağdaş yaşam alanları oluşturuyoruz.",
+      "Mekânınızın mevcut mimarisini analiz edip, tavan ve duvar çözümlerini aydınlatma ile birlikte tasarlayarak bütüncül bir görünüm sağlıyoruz.",
     icon: Sparkles,
   },
   {
     title: "Her Bütçeye Uygun Fiyatlar",
     description:
-      "Farklı bütçelere uygun, şeffaf ve sürprizsiz fiyatlandırma politikasıyla çalışıyoruz.",
+      "Aynı iş için farklı malzeme ve uygulama alternatifleri sunarak bütçenize en uygun kombinasyonu birlikte belirliyoruz.",
     icon: Wallet,
   },
 ];
@@ -39,8 +39,8 @@ export function WhyUsSection() {
       className="space-y-6 scroll-mt-24 sm:scroll-mt-28"
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      viewport={{ once: true, amount: 0.22 }}
+      transition={{ duration: 0.85, ease: [0.22, 0.61, 0.36, 1] }}
     >
       <div className="space-y-3">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
@@ -53,37 +53,24 @@ export function WhyUsSection() {
           Projelerinizi sadece uygulamıyor, ihtiyacınıza en uygun çözümü birlikte tasarlıyoruz.
         </p>
       </div>
-      <motion.div
-        className="grid gap-4 md:grid-cols-2"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.09, delayChildren: 0.03 },
-          },
-        }}
-      >
-        {items.map((item) => (
+      <div className="grid gap-4 md:grid-cols-2">
+        {items.map((item, index) => (
           <motion.div
             key={item.title}
-            variants={{
-              hidden: { opacity: 0, y: 22, scale: 0.97 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                transition: {
-                  duration: 0.45,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                },
-              },
+            initial={{ opacity: 0, y: 20, scale: 0.985 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{
+              duration: 0.75,
+              ease: [0.22, 0.61, 0.36, 1],
+              delay: index * 0.06,
             }}
+            whileHover={{ y: -6, scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <GlassCard className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-sky-50 text-sky-700 shadow-sm shadow-sky-100/70">
+                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 shadow-sm shadow-teal-100/70">
                   <item.icon className="h-4 w-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-slate-900">
@@ -96,7 +83,7 @@ export function WhyUsSection() {
             </GlassCard>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </motion.section>
   );
 }

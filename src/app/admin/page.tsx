@@ -183,7 +183,7 @@ export default function AdminPage() {
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-teal-600">
             Yönetim Paneli
           </p>
           <h1 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
@@ -194,10 +194,12 @@ export default function AdminPage() {
             ekleyebilir, güncelleyebilir ve silebilirsiniz. Değişiklikler anında yayına alınır.
           </p>
         </div>
-        <div className="space-y-2 rounded-3xl border border-slate-200/80 bg-white/80 p-3 text-[0.78rem] shadow-sm backdrop-blur-md sm:max-w-xs">
-          <div className="flex items-center gap-2 text-slate-700">
-            <Lock className="h-4 w-4" />
-            <span className="font-medium">Yönetici Şifresi</span>
+        <div className="space-y-2 rounded-3xl border border-teal-100/80 bg-white/90 p-3 text-[0.78rem] shadow-[0_18px_50px_rgba(15,23,42,0.14)] backdrop-blur-xl sm:max-w-xs">
+          <div className="flex items-center gap-2 text-slate-800">
+            <div className="flex h-8 w-8 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-600 to-orange-500 text-white shadow-sm shadow-teal-900/30">
+              <Lock className="h-3.5 w-3.5" />
+            </div>
+            <span className="text-[0.78rem] font-semibold">Yönetici Şifresi</span>
           </div>
           <p className="text-[0.72rem] text-slate-500">
             Proje ekleme ve silme işlemleri için sunucu tarafında tanımlı
@@ -224,9 +226,9 @@ export default function AdminPage() {
         </div>
       </div>
       {!authenticated ? (
-        <div className="mt-4 rounded-3xl border border-dashed border-slate-200/80 bg-white/70 p-5 text-[0.8rem] text-slate-600 shadow-sm">
-          <p className="font-semibold text-slate-900">Yönetim paneli kilitli.</p>
-          <p className="mt-1 max-w-xl text-[0.75rem]">
+        <div className="mt-4 rounded-3xl border border-dashed border-teal-200/80 bg-teal-50/60 p-5 text-[0.8rem] text-teal-800 shadow-sm">
+          <p className="font-semibold text-teal-900">Yönetim paneli kilitli.</p>
+          <p className="mt-1 max-w-xl text-[0.75rem] text-teal-700">
             Proje kartlarını görüntülemek ve düzenlemek için yukarıdaki alana yönetici
             şifresini girip "Girişi Aç" butonuna tıklayın.
           </p>
@@ -234,7 +236,7 @@ export default function AdminPage() {
       ) : (
         <div className="grid gap-6 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
           <motion.div
-            className="space-y-4 rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.06)] backdrop-blur-2xl"
+            className="space-y-4 rounded-3xl border border-teal-100/80 bg-white/85 p-5 shadow-[0_22px_70px_rgba(15,23,42,0.08)] backdrop-blur-2xl"
             initial={{ opacity: 0, y: 20, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -249,7 +251,7 @@ export default function AdminPage() {
                   Projenin başlığını, lokasyonunu ve isteğe bağlı olarak görsel URL&apos;sini girin.
                 </p>
               </div>
-              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-sky-600 text-white shadow-sm shadow-sky-500/40">
+              <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-600 to-orange-500 text-white shadow-sm shadow-teal-900/30">
                 <PlusCircle className="h-4 w-4" />
               </div>
             </div>
@@ -305,7 +307,7 @@ export default function AdminPage() {
           </motion.div>
 
           <motion.div
-            className="space-y-3 rounded-3xl border border-slate-100/90 bg-slate-50/80 p-5 text-[0.8rem] shadow-[0_18px_60px_rgba(148,163,184,0.35)]"
+            className="space-y-3 rounded-3xl border border-teal-100/90 bg-white/90 p-5 text-[0.8rem] shadow-[0_22px_70px_rgba(15,23,42,0.14)]"
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -322,7 +324,7 @@ export default function AdminPage() {
                 type="button"
                 variant="ghost"
                 size="sm"
-                className="text-xs text-slate-600"
+                className="text-xs text-teal-700 hover:text-teal-800"
                 onClick={() => {
                   if (!authenticated) return;
                   void fetchProjects(password || undefined);
@@ -340,9 +342,12 @@ export default function AdminPage() {
             ) : (
               <div className="space-y-3 max-h-[420px] overflow-y-auto pr-1">
                 {projects.map((project) => (
-                  <div
+                  <motion.div
                     key={project.id}
                     className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white/90 p-3 shadow-sm"
+                    whileHover={{ y: -4, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
                   >
                     <div className="h-14 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
                       {project.imageUrl ? (
@@ -376,7 +381,7 @@ export default function AdminPage() {
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </Button>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             )}

@@ -1,18 +1,37 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Montserrat, Mulish, Poppins } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileContactBar } from "@/components/layout/mobile-contact-bar";
 import { siteConfig } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const headingFont = Montserrat({
+  variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bodyFont = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const ctaFont = Poppins({
+  variable: "--font-cta",
+  subsets: ["latin"],
+  weight: ["500"],
+});
+
+const metaFont = Mulish({
+  variable: "--font-meta",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const monoFont = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -43,9 +62,9 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${headingFont.variable} ${bodyFont.variable} ${ctaFont.variable} ${metaFont.variable} ${monoFont.variable} antialiased`}
       >
-        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.02),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.03),_transparent_60%)]">
+        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(13,148,136,0.06),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.05),_transparent_60%)]">
           <SiteHeader />
           {/* JSON-LD: Organization */}
           <script

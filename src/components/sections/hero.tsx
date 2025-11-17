@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, PhoneCall } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
+import { HeroThreeScene } from "./hero-three-scene";
 
 const HERO_IMAGES = [
   {
@@ -22,6 +23,16 @@ const HERO_IMAGES = [
 export function HeroSection() {
   const [currentImage, setCurrentImage] = React.useState(0);
 
+  const sectionRef = React.useRef<HTMLElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const contentScale = useTransform(scrollYProgress, [0, 1], [1, 0.97]);
+
   React.useEffect(() => {
     const id = window.setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
@@ -31,6 +42,7 @@ export function HeroSection() {
 
   return (
     <section
+      ref={sectionRef}
       className="relative -mt-4 overflow-hidden pt-16 pb-16 sm:-mt-6 sm:pt-20 sm:pb-20 lg:-mt-8 lg:pt-24 lg:pb-24 min-h-[560px]"
       aria-labelledby="hero-title"
     >
@@ -59,8 +71,14 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.22),rgba(255,255,255,0.1),rgba(255,255,255,0))]" />
           </motion.div>
         ))}
+        <div className="absolute inset-0 opacity-80">
+          <HeroThreeScene scrollProgress={scrollYProgress} />
+        </div>
       </div>
-      <div className="relative z-10 mx-auto max-w-6xl">
+      <motion.div
+        className="relative z-10 mx-auto max-w-6xl"
+        style={{ y: contentY, scale: contentScale }}
+      >
         <div className="relative overflow-hidden rounded-[32px] border border-white/50 bg-white/20 px-4 py-6 shadow-[0_24px_60px_rgba(15,23,42,0.18)] backdrop-blur-xl sm:px-6 sm:py-7 lg:px-8 lg:py-9 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:rounded-[32px] before:border before:border-white/40 before:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.55),transparent_60%),radial-gradient(circle_at_bottom,rgba(15,23,42,0.2),transparent_65%)] before:opacity-65">
           <div className="grid gap-8 md:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] md:items-center lg:gap-12">
             <motion.div
@@ -69,8 +87,8 @@ export function HeroSection() {
           transition={{ duration: 0.95, ease: [0.22, 0.61, 0.36, 1] }}
           className="space-y-7 max-w-xl lg:max-w-2xl"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-100 bg-sky-50/80 px-3 py-1 text-xs font-medium text-sky-700 shadow-sm shadow-sky-100/80">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50/80 px-3 py-1 text-xs font-medium text-teal-800 shadow-sm shadow-teal-100/80">
+            <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
             Profesyonel tadilat &amp; dekorasyon çözümleri
           </div>
           <div className="space-y-4">
@@ -79,7 +97,7 @@ export function HeroSection() {
               className="text-balance text-3xl font-semibold leading-snug tracking-tight text-slate-900 sm:text-4xl lg:text-[2.7rem] lg:leading-[1.08]"
             >
               Tadilat &amp; Dekorasyonda
-              <span className="block bg-gradient-to-r from-sky-700 via-sky-900 to-slate-900 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-teal-700 via-teal-900 to-slate-900 bg-clip-text text-transparent">
                 Güvenin Adresi!
               </span>
             </h1>
@@ -92,7 +110,7 @@ export function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="w-full sm:w-auto shadow-[0_18px_45px_rgba(56,189,248,0.4)]"
+              className="w-full sm:w-auto shadow-[0_18px_45px_rgba(13,148,136,0.45)]"
             >
               <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer">
                 WhatsApp İletişim
@@ -112,13 +130,13 @@ export function HeroSection() {
           </div>
           <div className="inline-flex flex-wrap items-center gap-4 rounded-2xl bg-white/80 px-3 py-2 text-xs text-slate-700 shadow-sm">
             <div className="flex items-center gap-2">
-              <span className="h-6 w-6 rounded-full bg-emerald-50 text-[0.68rem] font-semibold text-emerald-700 shadow-sm shadow-emerald-100/70 flex items-center justify-center">
+              <span className="h-6 w-6 rounded-full bg-teal-50 text-[0.68rem] font-semibold text-teal-700 shadow-sm shadow-teal-100/70 flex items-center justify-center">
                 10+
               </span>
               <span className="font-medium">yıllık deneyim</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-6 w-6 rounded-full bg-sky-50 text-[0.68rem] font-semibold text-sky-700 shadow-sm shadow-sky-100/70 flex items-center justify-center">
+              <span className="h-6 w-6 rounded-full bg-orange-50 text-[0.68rem] font-semibold text-orange-600 shadow-sm shadow-orange-100/70 flex items-center justify-center">
                 %100
               </span>
               <span className="font-medium">müşteri memnuniyeti odağı</span>
@@ -144,7 +162,7 @@ export function HeroSection() {
                     Asma Tavan, Bafıl, Gergi Tavan, Alçı &amp; boya uygulamaları
                   </p>
                 </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-emerald-400 text-white shadow-md shadow-sky-900/30">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-600 to-orange-500 text-white shadow-md shadow-teal-900/30">
                   <PhoneCall className="h-4 w-4" />
                 </div>
               </div>
@@ -163,7 +181,7 @@ export function HeroSection() {
                 </p>
               </div>
 
-              <div className="rounded-3xl border border-sky-100/80 bg-gradient-to-br from-sky-50 via-slate-50 to-amber-50 px-3 py-3 shadow-[0_18px_55px_rgba(15,23,42,0.06)]">
+              <div className="rounded-3xl border border-teal-100/80 bg-gradient-to-br from-teal-50 via-slate-50 to-orange-50 px-3 py-3 shadow-[0_18px_55px_rgba(15,23,42,0.06)]">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
                   Temiz Teslim
                 </p>
@@ -176,7 +194,7 @@ export function HeroSection() {
             </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

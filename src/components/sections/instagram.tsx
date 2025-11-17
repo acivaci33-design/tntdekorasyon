@@ -85,8 +85,8 @@ export function InstagramSection() {
       className="space-y-6 scroll-mt-24 sm:scroll-mt-28"
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      viewport={{ once: true, amount: 0.22 }}
+      transition={{ duration: 0.85, ease: [0.22, 0.61, 0.36, 1] }}
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
@@ -136,14 +136,16 @@ export function InstagramSection() {
                 y: 0,
                 scale: 1,
                 transition: {
-                  duration: 0.45,
-                  ease: [0.25, 0.46, 0.45, 0.94],
+                  duration: 0.7,
+                  ease: [0.22, 0.61, 0.36, 1],
                 },
               },
             }}
+            whileHover={{ y: -6, scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <GlassCard className="group relative overflow-hidden p-0">
-              <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_0_0,rgba(56,189,248,0.18),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(251,191,36,0.2),transparent_55%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_0_0,rgba(13,148,136,0.22),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(249,115,22,0.22),transparent_55%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl">
                 {project.imageUrl ? (
                   <div

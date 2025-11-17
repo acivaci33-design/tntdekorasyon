@@ -65,11 +65,11 @@ export function ContactSection() {
       className="space-y-6 scroll-mt-24 sm:scroll-mt-28"
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+      viewport={{ once: true, amount: 0.22 }}
+      transition={{ duration: 0.85, ease: [0.22, 0.61, 0.36, 1] }}
     >
       <div className="space-y-3">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal-600">
           İletişim
         </p>
         <h2 className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
@@ -81,9 +81,11 @@ export function ContactSection() {
       </div>
       <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <motion.div
-          className="space-y-4 rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.06)] backdrop-blur-2xl"
+          className="space-y-4 rounded-3xl border border-teal-100/80 bg-white/85 p-5 shadow-[0_22px_70px_rgba(15,23,42,0.10)] backdrop-blur-2xl"
           initial={{ opacity: 0, y: 20, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ y: -4, scale: 1.01 }}
+          whileTap={{ scale: 0.98 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
@@ -93,7 +95,11 @@ export function ContactSection() {
             <p>Telefon: {siteConfig.phoneSecondary}</p>
           </div>
           <div className="mt-3 flex flex-wrap gap-2 text-xs">
-            <Button asChild size="md" className="gap-2">
+            <Button
+              asChild
+              size="md"
+              className="gap-2 shadow-[0_18px_45px_rgba(13,148,136,0.45)]"
+            >
               <a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4" />
                 WhatsApp
@@ -103,7 +109,7 @@ export function ContactSection() {
               asChild
               variant="outline"
               size="md"
-              className="gap-2 border-slate-200/90 bg-white/80 text-slate-800"
+              className="gap-2 border-teal-100/80 bg-white/80 text-teal-800"
             >
               <a href={`tel:${siteConfig.phonePrimaryRaw}`}>
                 <Phone className="h-4 w-4" />
@@ -114,7 +120,7 @@ export function ContactSection() {
               asChild
               variant="ghost"
               size="md"
-              className="gap-2 text-slate-700"
+              className="gap-2 text-teal-700 hover:text-teal-800"
             >
               <a href={siteConfig.instagram} target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-4 w-4" />
@@ -124,9 +130,11 @@ export function ContactSection() {
           </div>
         </motion.div>
         <motion.div
-          className="rounded-3xl border border-slate-100/90 bg-slate-50/80 p-5 shadow-[0_18px_60px_rgba(148,163,184,0.35)]"
+          className="rounded-3xl border border-teal-100/90 bg-white/90 p-5 shadow-[0_22px_70px_rgba(15,23,42,0.12)]"
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={{ y: -4, scale: 1.01 }}
+          whileTap={{ scale: 0.98 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.05 }}
         >
@@ -195,7 +203,7 @@ export function ContactSection() {
               </p>
             </div>
             {status === "success" && statusMessage && (
-              <p className="pt-1 text-[0.78rem] font-medium text-emerald-600">{statusMessage}</p>
+              <p className="pt-1 text-[0.78rem] font-medium text-teal-600">{statusMessage}</p>
             )}
             {status === "error" && statusMessage && (
               <p className="pt-1 text-[0.78rem] font-medium text-red-500">{statusMessage}</p>

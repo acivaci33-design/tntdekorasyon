@@ -4,8 +4,8 @@ import { siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-white/20 bg-white/5 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_-18px_45px_rgba(15,23,42,0.16)] relative overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(circle_at_0_0,rgba(56,189,248,0.18),transparent_55%),radial-gradient(circle_at_100%_0,rgba(251,191,36,0.22),transparent_55%)]">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 pt-6 pb-24 text-xs text-slate-500 md:flex-row md:items-center md:justify-between md:px-6 md:py-6 md:pb-6 lg:px-8">
+    <footer className="mt-16 border-t border-white/20 bg-white/5 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_-18px_45px_rgba(15,23,42,0.16)] relative overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(circle_at_0_0,rgba(13,148,136,0.22),transparent_55%),radial-gradient(circle_at_100%_0,rgba(249,115,22,0.24),transparent_55%)]">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 pt-6 pb-24 text-xs text-slate-500 font-meta md:flex-row md:items-center md:justify-between md:px-6 md:py-6 md:pb-6 lg:px-8">
         <div className="space-y-1">
           <p className="font-medium text-slate-600">{siteConfig.shortName}</p>
           <p className="text-[11px]">

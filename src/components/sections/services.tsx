@@ -16,67 +16,80 @@ import { GlassCard } from "@/components/ui/glass-card";
 const services = [
   {
     title: "Asma Tavan Sistemleri",
-    description: "Modern, estetik ve fonksiyonel tavan çözümleri ile mekânlarınıza derinlik katıyoruz.",
+    description:
+      "Işık, akustik ve estetiği dengeleyen asma tavan çözümleriyle tavanı mekânın mimarisine uyumlu hale getiriyoruz.",
     icon: PanelsTopLeft,
   },
   {
     title: "Bafıl Tavan",
-    description: "Akustik performansı güçlendiren, mimariyi öne çıkaran bafıl tavan uygulamaları.",
+    description:
+      "Özellikle açık ofis ve yüksek hacimli alanlarda hem akustiği iyileştiren hem de mimariyi öne çıkaran bafıl tavan uygulamaları.",
     icon: SquareDashedBottomCode,
   },
   {
     title: "Gergi Tavan",
-    description: "Işıklı ve özel tasarım gergi tavanlarla mekânlarınıza benzersiz bir atmosfer kazandırıyoruz.",
+    description:
+      "Işıklı ve özel tasarım gergi tavanlarla mekânınıza marka kimliğinize uygun, dikkat çeken bir odak noktası kazandırıyoruz.",
     icon: Layers,
   },
   {
     title: "Mesh Tavan",
-    description: "Endüstriyel ve modern görünümü birleştiren mesh tavan sistemleri.",
+    description:
+      "AVM, otopark ve endüstriyel alanlarda tesisatları gizlerken, modern ve geçirgen bir tavan görünümü sağlar.",
     icon: Building2,
   },
   {
     title: "Lambiri Tavan",
-    description: "Sıcak ve doğal bir atmosfer için lambiri tavan kaplama çözümleri.",
+    description:
+      "Ahşap dokusuyla mekâna sıcaklık katan, tavanı daha doğal ve samimi hissettiren lambiri uygulamaları.",
     icon: Sparkles,
   },
   {
     title: "Taş Yünü Uygulamaları",
-    description: "Isı ve ses yalıtımında yüksek performans sunan taş yünü tavan ve duvar uygulamaları.",
+    description:
+      "Ofis, toplantı odası ve yaşam alanlarında ses ve ısı konforunu artıran taş yünü tavan ve duvar sistemleri.",
     icon: Layers,
   },
   {
     title: "Alçı Dekor",
-    description: "Kartonsan alçıpan bölme, niş, spot ve dekoratif çözümler.",
+    description:
+      "Bölme duvar, niş, spot kanalı ve dekoratif detaylarla planınıza uygun, temiz hatlara sahip alçıpan çözümleri.",
     icon: Brush,
   },
   {
     title: "Dekoratif Boya",
-    description: "Mekan karakterini güçlendiren, özel efektli dekoratif boya uygulamaları.",
+    description:
+      "Düz bir boya yüzeyi yerine mekânın karakterini güçlendiren doku ve efektlerle özel dekoratif boya uygulamaları.",
     icon: Palette,
   },
   {
     title: "Grenli Boya",
-    description: "Dayanıklı, dokulu yüzeyler için grenli dış ve iç cephe boya çözümleri.",
+    description:
+      "Dış cephe ve yoğun kullanılan iç yüzeylerde dayanıklılığı ve dokuyu bir arada sunan grenli boya çözümleri.",
     icon: Palette,
   },
   {
     title: "Sedef Boya",
-    description: "Işığa göre ton değiştiren, sofistike sedef boya uygulamaları.",
+    description:
+      "Işığa göre ton değiştiren, duvarlara zarif ve canlı bir derinlik katan sedef efekt uygulamaları.",
     icon: Sparkles,
   },
   {
     title: "Dış Cephe Mantolama",
-    description: "Enerji verimliliğini artıran profesyonel ısı yalıtım sistemleri.",
+    description:
+      "Mevsim koşullarına uygun malzeme seçimiyle binanızın ısı kaybını azaltan, uzun ömürlü mantolama uygulamaları.",
     icon: Building2,
   },
   {
     title: "Yalı Baskı",
-    description: "Bina cephelerinde doğal taş ve ahşap görünümlü yalı baskı çözümleri.",
+    description:
+      "Doğal taş veya ahşap görünümünü, bakım gerektirmeyen dış cephe kaplamalarıyla cepheye taşıyan yalı baskı uygulamaları.",
     icon: Building2,
   },
   {
     title: "Tadilat & Dekorasyon Genel Hizmetler",
-    description: "Anahtar teslim tadilat, ince işçilik ve komple dekorasyon çözümleri.",
+    description:
+      "Keşiften teslimata kadar tüm ince işleri tek elden yönettiğimiz, anahtar teslim tadilat ve dekorasyon hizmetleri.",
     icon: Sparkles,
   },
 ];
@@ -89,7 +102,7 @@ export function ServicesSection() {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.85, ease: [0.22, 0.61, 0.36, 1] }}
     >
       <div className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">
@@ -104,40 +117,24 @@ export function ServicesSection() {
           </p>
         </div>
       </div>
-      <motion.div
-        className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.08,
-              delayChildren: 0.02,
-            },
-          },
-        }}
-      >
-        {services.map((service) => (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((service, index) => (
           <motion.div
             key={service.title}
-            variants={{
-              hidden: { opacity: 0, y: 24, scale: 0.97 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                transition: {
-                  duration: 0.45,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                },
-              },
+            initial={{ opacity: 0, y: 22, scale: 0.985 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.55 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 0.61, 0.36, 1],
+              delay: index * 0.04,
             }}
+            whileHover={{ y: -6, scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             <GlassCard className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-sky-50 text-sky-700 shadow-sm shadow-sky-100/70">
+                <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 shadow-sm shadow-teal-100/70">
                   <service.icon className="h-4 w-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-slate-900">
@@ -150,7 +147,7 @@ export function ServicesSection() {
             </GlassCard>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </motion.section>
   );
 }

@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 import { siteConfig } from "@/lib/site";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendApiKey = process.env.RESEND_API_KEY;
 
 export async function POST(request: Request) {
   try {
@@ -15,6 +15,12 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
+
+    if (!resendApiKey) {
+      return NextResponse.json({ success: true, emailDisabled: true });
+    }
+
+    const resend = new Resend(resendApiKey);
 
     await resend.emails.send({
       from: "TNT DEKOR <onboarding@resend.dev>",
